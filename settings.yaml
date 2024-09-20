@@ -1,0 +1,47 @@
+inverter:
+  rootUrl: "https://myqhome:7000"          #Base URL for the inverters Installer logon page, or use https://myqhome:7000
+  logonURL: "https://myqhome:7000/login"   #Substitute the IP address for your particular case, or use https://myqhome:7000/login
+  logonPassword: "inverterpassword"        #QCells installer password - sometimes this is the last four digits of your inverter serial number
+  usableBatteryCapacity: 19.551            #Usable battery capacity in Wh (one Q.Home Core battery is 6.517kWh)
+  realBatteryCapacity: 20.580              #Real battery capacity in Wh (one Q.Home Core battery is 6.86kWh)
+  pvArrayCount: 2                          #Number of PV arrays - max is 2 on this model
+
+endpoints:
+  pcssystem: "/system/status/pcssystem"     #No need to change this
+  allnvm: "/config/allnvm"                  #No need to change this
+  tou: "/config/tou"                        #No need to change this
+  device: "/install/device"                 #No need to change this
+  battery-sync: "/install/battery-sync"     #No need to change this
+
+solcast:
+  solcastApiKey: "somerandomlettersandnumbersgohere"             #Your Solcast API key from your Solcast account (https://toolkit.solcast.com.au/account/api-key)
+  solcastAPIURLSite1: "https://api.solcast.com.au/rooftop_sites/somerandomlettersandnumbersgohere/forecasts?format=json"  #Full URL of your 1st personal rooftop forecast JSON. You can get this from your site summary page.
+  solcastAPIURLSite2: "https://api.solcast.com.au/rooftop_sites/somerandomlettersandnumbersgohere/forecasts?format=json"  #Full URL of your 2nd personal rooftop forecast JSON. You can get this from your site summary page.
+  solcastEstimate: 2             #Options are 1=Standard, 2=Conservative (10th percentile), 3=Optimistic (90th percentile)
+  solcastVariance: 0             #A percentage above or below the chosen solcast estimate, allows additional tweaking. Valid range -100 to 100
+
+user:
+  maxChargeRate: 3                    #Charge rate you'd like to limit the script to in kWh. Max for UK QCells installs is 4.999
+  chargeWindowStart: "00:30"          #Start time of your cheap overnight tariff. Perhaps allow a small offset from the start.
+  chargeWindowEnd: "06:30"            #End time of your cheap overnight tariff. Again, you may want to stop this a little early
+  dailyUsage: [15,15,15,15,15,20,20]  #Estimated daily usage for each day of the week (in kWh). 0 = Monday, 1 = Tuesday etc to match output of DATE.weekday()
+  chargingPlan: 2                     #1=Limit by time window (power will vary)  2=Limit by power (charge window will vary)
+
+email:
+  username: "mygoogleemailaddress@gmail.com"   #Your email username for SMTP - maybe set up a specific GMail account for this
+  password: "Your SMTP server password"        #Your email password for SMTP - for GMail you will need to set up an app specific password, see https://support.google.com/mail/answer/185833?hl=en-GB
+  smtpServer: "smtp.gmail.com"                #Your SMTP server address (this one is for GMail)
+  smtpPort: 465                               #SMTP Server port
+  fromName: "Solar Panels"                    #Friendly "From" name
+  toAddress: "myusualemailaddress@outlook.com"         #The destination email address
+
+database:
+  host: "127.0.0.1"        #MariaDB IP Address
+  port: 3306                  #MariaDB port - default is 3306
+  user: "username"             #MariaDB username
+  password: "password"     #MariaDB Password
+  databaseName: "qcells"      #MariaDB database to connect to
+
+#solcastLocation: "local"      #Local will look for files called forecasts1.json and forecasts2.json in the forecasts subfolder
+solcastLocation: "web"       #Web will connect to the Solcast API using the URLs in solcastAPIURLSite1 and solcastAPIURLSite2
+  

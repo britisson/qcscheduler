@@ -1,0 +1,2 @@
+2024-09-20 09:22:40	/opt/scripts/live/livereadings.py	128	n/a	Program execution started
+2024-09-20 09:22:46	/opt/scripts/live/livereadings.py	36	HTTPError('401 Client Error: Unauthorized for url: https://192.168.0.12:7000/system/status/pcssystem')	Unable to retrieve pcssystem - no valid session
