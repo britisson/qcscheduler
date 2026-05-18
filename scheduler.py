@@ -420,7 +420,7 @@ qcells.writeToLog(filenameEnd, linenoEnd, "n/a", "Program execution finished")
 
     # https://192.168.0.12:7000/system/information/serial-number
 
-    # https://192.168.0.12:7000/system/information/product-model-name?EMS_serial_number=121141246012232237
+    # https://192.168.0.12:7000/system/information/product-model-name?EMS_serial_number=###################
 
     # https://192.168.0.12:7000/system/information/ess-version
 
